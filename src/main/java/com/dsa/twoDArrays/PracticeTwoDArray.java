@@ -2,7 +2,7 @@ package com.dsa.twoDArrays;
 
 public class PracticeTwoDArray {
 
-    public static void aa(String[] args) {
+    public static void aa() {
         int [][] array = {{1,2,3},{4,5,6,22,12},{7,8,9,1,4},{10,11,12}};
         System.out.println("Length of the Column");
         System.out.println(array.length);
@@ -48,10 +48,11 @@ public class PracticeTwoDArray {
         }
     }
     public static void main(String[] args) {
+
         printPrimaryAndSecondaryDiagonal();
     }
     public static void getDynamicRowColumnSum() {
-        int [][] array = {{1,2,3},{4,5,6,7,8},{9,10,11,12,13,22},{14,15,16}};
+        int [][] array = {{1,2,3},{99},{4,5,6,7},{8,9}};
         for (int [] arr : array ) {
             int rowSum = 0;
             for (int a : arr) {
@@ -60,39 +61,37 @@ public class PracticeTwoDArray {
             System.out.printf("%d th row sum is %d", 0, rowSum);
             System.out.println();
         }
-        int maxColumnSize = 0;
-        for (int [] arr : array) {
-            if (array.length > maxColumnSize)
-                maxColumnSize = array.length;
+
+        int columnHighest = 0;
+        for (int i=0; i < array.length; i++) {
+            if (columnHighest < array[i].length) {
+                columnHighest = array[i].length;
+            }
         }
 
-        for(int j= 0; j< maxColumnSize; j++){
+        for (int j =0; j <columnHighest; j++) {
             int columnWiseSum = 0;
-            for(int i= 0; i< array.length; i++ ){
-                if (j < array[i].length) {
-                    columnWiseSum = columnWiseSum + array[i][j];
-                }
-            }
-            System.out.printf("%d th column sum is %d%n", j, columnWiseSum);
+             for (int i =0 ; i < array.length; i++ ) {
+                 if (j < array[i].length) {
+                     columnWiseSum = columnWiseSum +  array[i][j];
+                 }
+             }
+            System.out.printf("%d column Sum is %d%n ", j, columnWiseSum);
         }
     }
 
     public static void findMaximumElementInMatrix() {
-        int [][] array = {{1,2,3},{4,5,6,7,8},{9,10,11,12,13},{14,15,16}};
+        int [][] array = {{1,2,3},{4,5,6,7,8},{9,10,99,11,12,13},{14,15,16}};
         int max = 0;
-        int i=0;
         for (int [] arr : array ) {
-            int j=0;
+        
             for(int a : arr) {
-                    System.out.printf("[%d][%d]",i,j++);
-                    System.out.printf("=> %d",a);
-                    System.out.print(" ");
-
+                   if (a> max) {
+                    max = a;
+                   }
             }
-            i++;
-            System.out.println("");
         }
-        System.out.printf("Maximum element in array is %d", max);
+        System.out.printf("Maximum element in array is %d%n", max);
     }
 
     public static void findMaximumElementInMatrix3() {
@@ -126,23 +125,25 @@ public class PracticeTwoDArray {
     }
 
     public static void printPrimaryAndSecondaryDiagonal() {
-        int [][] array = {{1,2,4},{4,5,6},{9,10,11}};
-        int sumOfPrimaryDiagonal = 0;
-        int sumOfSecondaryDiagonal = 0;
+        int [][] array = {{1,2,3},{4,5,6},{7,8,9}};
+        System.out.println("Print primary diagonal");
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j <array[i].length;j++) {
-                if (i == j){
-                    sumOfPrimaryDiagonal = sumOfPrimaryDiagonal + array[i][j];
-                }
-                int diagonalPosition = i+j;
-                if (diagonalPosition == (array.length - 1)){
-                    sumOfSecondaryDiagonal = sumOfSecondaryDiagonal +  array[i][j];
+                if (i == j) {
+                    System.out.print(array[i][j]);
+                    System.out.print(" ");
+                } 
+            }
+        }
+        System.out.println("print secondary diagonal");
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                if ( ( i + j ) == array.length - 1) {
+                    System.out.print(array[i][j]);
+                    System.out.print(" ");
                 }
             }
         }
-        System.out.printf("Sum of Primary diagonal in 2D array is %d%n", sumOfPrimaryDiagonal);
-        System.out.printf("Sum of secondary diagonal in 2D array is %d", sumOfSecondaryDiagonal);
-
     }
 
 public static void printArray(int [][] array) {
