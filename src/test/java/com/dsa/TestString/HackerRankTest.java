@@ -1,5 +1,12 @@
 package com.dsa.TestString;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class HackerRankTest {
 
     /**
@@ -27,7 +34,7 @@ public class HackerRankTest {
         return len1 - len2;
     }
 
-    public static void main(String[] args) {
+    public static void asdasd(String[] args) {
         // Test cases for lexicographical comparison
         String[] testCases = {
             "java", "java",     // Equal strings
@@ -60,6 +67,81 @@ public class HackerRankTest {
             }
             System.out.println();
         }
+    }
+
+    public static void main(String[] args) {
+        //System.out.println(getSmallestAndLargest("welcometojava", 3));
+        verifyAnagrams();
+    }
+    public static String getSmallestAndLargest(String s, int k) {
+
+        String [] aa = new String[s.length()-k+1];
+        for(int i = 0; i <=s.length()- k; i++) {
+            aa[i]= s.substring(i, k+i);
+        }
+        for(int j=0; j < aa.length -1 ; j++){
+            for (int i=0; i<aa.length - j -1 ;i++){
+                int order = aa[i].compareTo(aa[i+1]);
+                if (order > 0) {
+                    String temp = aa[i];
+                    aa[i] = aa[i+1];
+                    aa[i+1] = temp;
+
+                }
+            }
+        }
+
+        String smallest = aa[0];
+        String largest = aa[aa.length-1];
+
+
+
+        // Complete the function
+        // 'smallest' must be the lexicographically smallest substring of length 'k'
+        // 'largest' must be the lexicographically largest substring of length 'k'
+
+        return smallest + "\n" + largest;
+
+    }
+
+    public  static void StringReverse() {
+        String A = "madam";
+        String palam = "";
+        for (int i= A.length()-1; i>=0 ; i--) {
+            palam = palam + A.charAt(i);
+        }
+        if (palam.equals(A))
+            System.out.println("Yes");
+        else
+            System.out.println("No");
+
+
+        String B = A.chars().
+                mapToObj(a->(char)a)
+                        .reduce("", (s,a)->a+s, (s1,s2)->s1+s2);
+
+        String LL = A.chars()
+                .mapToObj(c -> (char) c)
+                .reduce("", (s, c) -> c + s, (s1, s2) -> s2 + s1);
+        System.out.println(B);
+    }
+
+    public static void verifyAnagrams() {
+        String a = "CAT";
+        String b = "tac";
+
+        boolean isAnagram;
+        if (a.length() == b.length()) {
+            int aAsciSum  = a.toLowerCase().chars().mapToObj(res -> (int )res).reduce(0,(r,s)->r+s);
+            System.out.println(aAsciSum);
+            int bAsciSum = b.toLowerCase().chars().reduce(0, (res, num) -> res + num);
+            if (aAsciSum == bAsciSum) {
+                isAnagram = true;
+            }
+        }
+       
+
+
     }
 }
 
