@@ -71,7 +71,7 @@ public class HackerRankTest {
 
     public static void main(String[] args) {
         //System.out.println(getSmallestAndLargest("welcometojava", 3));
-        verifyAnagrams();
+        verifySplit();
     }
     public static String getSmallestAndLargest(String s, int k) {
 
@@ -139,9 +139,31 @@ public class HackerRankTest {
                 isAnagram = true;
             }
         }
-       
+    }
+
+    public static void verifyAnagramUsingBinarySorting() {
+        String input = "madam";
+        char []  beforeSorting = input.toLowerCase().toCharArray();
+        for (int a = 0; a < beforeSorting.length; a++) {
+            for (int b  = 0; b < beforeSorting.length -1 - a ; b++) {
+                if (beforeSorting[b] > beforeSorting [b + 1]) {
+                    char temp = beforeSorting [b +1];
+                    beforeSorting [b +1] = beforeSorting [b];
+                    beforeSorting [b] =  temp;
+                }
+            }
+        }
 
 
+    }
+
+    public static void verifySplit() {
+        String s = "           ";
+        String [] tokenArray =  s.trim().isEmpty() ? new String[0] : s.trim().split("[ !,?._'@]+");
+        System.out.println(tokenArray.length);
+        for(int a = 0; a< tokenArray.length; a++) {
+            System.out.println(tokenArray[a]);
+        }
     }
 }
 
