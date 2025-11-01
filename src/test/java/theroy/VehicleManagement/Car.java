@@ -7,7 +7,7 @@ public class Car extends Vehicle{
         System.out.println("🔧🔧 🔧🔧🔧🔧🔧 [Car class loaded]");
     }
     // 3️⃣ Default Constructor (calls super())
-    Car () {
+    public Car () {
         System.out.println("🚗 Car: Default constructor called");
         this.model = "Standard";
         this.gears = 4;
